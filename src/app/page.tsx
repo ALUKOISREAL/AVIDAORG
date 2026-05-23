@@ -73,13 +73,53 @@ const CustomInstagramIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-// Static data outside components to prevent costly re-renders
+// Project data – GitHub source for Code button, relative routes for Live Demo
 const projects = [
-  { id: 1, title: "Project Alpha", description: "A high-performance web app built with Next.js and deployed globally.", tags: ["Next.js", "TypeScript", "Vercel"], metrics: { speed: "99% LCP", uptime: "99.9%" } },
-  { id: 2, title: "Nexus Dashboard", description: "A real-time data dashboard for tracking business metrics and user events.", tags: ["React", "WebSockets", "Go"], metrics: { speed: "Fast", uptime: "100%" } },
-  { id: 3, title: "Core Database", description: "A reliable backend API and database setup for managing user data.", tags: ["Prisma", "PostgreSQL", "Node.js"], metrics: { speed: "Sub-ms", uptime: "99.9%" } },
-  { id: 4, title: "Synapse UI", description: "A clean, animated user interface built to test modern web design trends.", tags: ["Framer Motion", "Tailwind", "React"], metrics: { speed: "120 FPS", uptime: "N/A" } },
-  { id: 5, title: "Cloud Toolkit", description: "Automated scripts and tools to help manage cloud servers easily.", tags: ["AWS", "Docker", "Terraform"], metrics: { speed: "Auto", uptime: "99.9%" } },
+  { 
+    id: 1, 
+    title: "Project Alpha", 
+    description: "A high-performance web app built with Next.js and deployed globally.", 
+    tags: ["Next.js", "TypeScript", "Vercel"], 
+    metrics: { speed: "99% LCP", uptime: "99.9%" },
+    codeUrl: "https://github.com/ALUKOISREAL/AVIDAORG/tree/main/src/app/projects/project-alpha",
+    liveUrl: "/projects/project-alpha"
+  },
+  { 
+    id: 2, 
+    title: "Nexus Dashboard", 
+    description: "A real-time data dashboard for tracking business metrics and user events.", 
+    tags: ["React", "WebSockets", "Go"], 
+    metrics: { speed: "Fast", uptime: "100%" },
+    codeUrl: "https://github.com/ALUKOISREAL/AVIDAORG/tree/main/src/app/projects/project-two",
+    liveUrl: "/projects/project-two"
+  },
+  { 
+    id: 3, 
+    title: "Core Database", 
+    description: "A reliable backend API and database setup for managing user data.", 
+    tags: ["Prisma", "PostgreSQL", "Node.js"], 
+    metrics: { speed: "Sub-ms", uptime: "99.9%" },
+    codeUrl: "https://github.com/ALUKOISREAL/AVIDAORG/tree/main/src/app/projects/project-three",
+    liveUrl: "/projects/project-three"
+  },
+  { 
+    id: 4, 
+    title: "Synapse UI", 
+    description: "A clean, animated user interface built to test modern web design trends.", 
+    tags: ["Framer Motion", "Tailwind", "React"], 
+    metrics: { speed: "120 FPS", uptime: "N/A" },
+    codeUrl: "https://github.com/ALUKOISREAL/AVIDAORG/tree/main/src/app/projects/project-four",
+    liveUrl: "/projects/project-four"
+  },
+  { 
+    id: 5, 
+    title: "Cloud Toolkit", 
+    description: "Automated scripts and tools to help manage cloud servers easily.", 
+    tags: ["AWS", "Docker", "Terraform"], 
+    metrics: { speed: "Auto", uptime: "99.9%" },
+    codeUrl: "https://github.com/ALUKOISREAL/AVIDAORG/tree/main/src/app/projects/project-five",
+    liveUrl: "/projects/project-five"
+  },
 ]
 
 const skills = [
@@ -94,7 +134,6 @@ export default function Home() {
   const [isSheetOpen, setIsSheetOpen] = useState(false)
   const [showTour, setShowTour] = useState(false)
 
-  // Trigger the onboarding tour once when the page loads
   useEffect(() => {
     const hasSeenTour = sessionStorage.getItem('hasSeenTour')
     if (!hasSeenTour) {
@@ -162,19 +201,16 @@ export default function Home() {
                 </CarouselItem>
               </CarouselContent>
 
-              {/* Mobile Swipe Hint */}
               <div className="flex justify-center items-center gap-2 mt-2 sm:hidden text-slate-400 text-xs font-semibold">
                 <ArrowLeftRight className="w-3 h-3" /> Swipe to navigate
               </div>
 
-              {/* Desktop Carousel Arrows */}
               <div className="hidden sm:flex justify-center gap-4 mt-4">
                 <CarouselPrevious className="static translate-y-0 bg-slate-800 border-slate-700 hover:bg-slate-700 text-white transition-colors" />
                 <CarouselNext className="static translate-y-0 bg-slate-800 border-slate-700 hover:bg-slate-700 text-white transition-colors" />
               </div>
             </Carousel>
 
-            {/* Skip Button */}
             <div className="mt-4 flex justify-center border-t border-slate-800 pt-4">
               <button onClick={handleCloseTour} className="text-slate-400 hover:text-white text-sm font-semibold transition-colors">
                 Skip Tour
@@ -183,7 +219,7 @@ export default function Home() {
           </DialogContent>
         </Dialog>
 
-        {/* ULTRA-FAST BACKGROUNDS: Replaced expensive CSS blurs with zero-cost radial gradients */}
+        {/* Backgrounds */}
         <div className="pointer-events-none absolute inset-0 z-[-1] bg-[linear-gradient(to_right,#0f172a_1px,transparent_1px),linear-gradient(to_bottom,#0f172a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-60"></div>
         <div className="pointer-events-none absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-[radial-gradient(circle,rgba(6,182,212,0.1)_0%,transparent_60%)] -z-10"></div>
         <div className="pointer-events-none absolute top-[20%] right-[-10%] w-[60%] h-[60%] bg-[radial-gradient(circle,rgba(168,85,247,0.05)_0%,transparent_60%)] -z-10"></div>
@@ -192,7 +228,6 @@ export default function Home() {
         <header className="fixed top-0 left-0 right-0 z-50 w-full border-b border-cyan-500/20 bg-slate-950/80 backdrop-blur-md shadow-sm">
           <div className="container flex h-16 items-center justify-between px-6 mx-auto">
             
-            {/* Logo */}
             <div className="flex items-center gap-3 font-extrabold text-2xl tracking-tight select-none">
               <div className="relative flex items-center justify-center w-9 h-9 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 shadow-sm">
                 <Code2 className="h-5 w-5 text-white" />
@@ -201,7 +236,6 @@ export default function Home() {
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">Avida.</span>
             </div>
             
-            {/* Desktop Nav */}
             <nav className="hidden md:flex items-center gap-8">
               <a href="#about" className="text-sm font-medium text-slate-300 hover:text-cyan-400 transition-colors">About</a>
               <a href="#skills" className="text-sm font-medium text-slate-300 hover:text-cyan-400 transition-colors">Skills</a>
@@ -214,7 +248,6 @@ export default function Home() {
               </a>
             </nav>
 
-            {/* Mobile Nav */}
             <div className="md:hidden flex items-center">
               <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
                 <SheetTrigger>
@@ -259,13 +292,11 @@ export default function Home() {
 
         <main className="container px-6 pt-28 pb-16 mx-auto space-y-24 md:space-y-32">
           
-          {/* Main Hero & Profile Section */}
+          {/* About Section */}
           <section id="about" className="space-y-16">
             
-            {/* Top Grid: Hero Text & Arcade */}
             <div className="grid lg:grid-cols-12 gap-12 items-center">
               
-              {/* Left Content (Text and Buttons) */}
               <div className="lg:col-span-7 flex flex-col items-start gap-6 md:gap-8">
                 <Tooltip>
                   <TooltipTrigger>
@@ -319,7 +350,6 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Arcade Component */}
               <div className="lg:col-span-5 flex justify-center w-full mt-12 lg:mt-0">
                 <div className="w-full max-w-sm">
                   <ArcadeHub />
@@ -327,15 +357,11 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Founder Profile Section */}
+            {/* Founder Profile */}
             <div className="flex flex-col sm:flex-row items-center sm:items-center gap-6 sm:gap-8 bg-slate-900 border border-slate-800 p-6 sm:p-8 rounded-3xl shadow-lg relative overflow-hidden">
               <div className="pointer-events-none absolute top-0 right-0 w-32 h-32 bg-[radial-gradient(circle,rgba(6,182,212,0.1)_0%,transparent_70%)] -z-10"></div>
               
-              {/* High Quality Profile Avatar Container */}
               <div className="relative w-32 h-32 sm:w-48 sm:h-48 shrink-0 rounded-full p-1 bg-slate-800 border border-slate-700">
-                {/* IMPORTANT: For 4k/Crisp resolution, ensure your 'profile.jpg' 
-                  file is genuinely high resolution (e.g. 1000x1000 pixels).
-                */}
                 <img
                   src="/profile.jpg"
                   alt="Aluko Israel Temiloluwa"
@@ -353,7 +379,6 @@ export default function Home() {
                 </Tooltip>
               </div>
 
-              {/* Founder Text */}
               <div className="space-y-3 text-center sm:text-left z-10">
                 <div className="flex items-center justify-center sm:justify-start gap-2 text-cyan-400 font-bold tracking-widest text-sm uppercase">
                   <UserCheck className="h-4 w-4" /> Founder
@@ -430,7 +455,7 @@ export default function Home() {
             </div>
           </section>
 
-          {/* Live Status Board */}
+          {/* System Overview */}
           <section className="bg-slate-900 border border-slate-800 p-6 rounded-xl text-sm text-slate-300 space-y-4">
             <div className="flex items-center justify-between border-b border-slate-800 pb-3">
               <div className="flex items-center gap-3">
@@ -448,11 +473,9 @@ export default function Home() {
           </section>
         </main>
 
-        {/* Updated Custom Footer */}
+        {/* Footer */}
         <footer className="border-t border-slate-800 bg-slate-950 py-12">
           <div className="container flex flex-col md:flex-row items-center justify-between gap-8 px-6 mx-auto">
-            
-            {/* Footer Logo Area */}
             <div className="flex items-center gap-3 font-extrabold text-2xl tracking-tight select-none">
               <div className="relative flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600">
                 <Code2 className="h-4 w-4 text-white" />
@@ -460,7 +483,6 @@ export default function Home() {
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">Avida.</span>
             </div>
 
-            {/* Personalized Contact Details */}
             <div className="flex flex-wrap items-center justify-center gap-6">
               <Tooltip>
                 <TooltipTrigger>
@@ -499,7 +521,6 @@ export default function Home() {
               </Tooltip>
             </div>
 
-            {/* Copyright */}
             <p className="text-center md:text-right text-slate-500 text-sm font-medium">
               &copy; {new Date().getFullYear()} Aluko Israel Temiloluwa.
             </p>
@@ -510,9 +531,8 @@ export default function Home() {
   )
 }
 
-/* ==========================================
-   ARCADE HUB COMPONENT
-   ========================================== */
+// --------------------- Arcade Components ---------------------
+
 function ArcadeHub() {
   return (
     <Card className="w-full bg-slate-900 border-slate-800 shadow-xl">
@@ -715,6 +735,7 @@ function QuantumClickerGame() {
   )
 }
 
+// Updated ProjectCard – Code uses Tooltip without asChild, Live Demo also Tooltip without asChild
 function ProjectCard({ project }: { project: any }) {
   return (
     <Card className="h-full flex flex-col justify-between bg-slate-900 border-slate-800 hover:border-cyan-500/50 transition-colors group">
@@ -744,25 +765,35 @@ function ProjectCard({ project }: { project: any }) {
       </CardContent>
       
       <CardFooter className="border-t border-slate-800 bg-slate-950/40 pt-5 pb-5 flex flex-col sm:flex-row gap-4">
-        <HoverCard>
-          <HoverCardTrigger>
-            <div className="inline-flex h-10 items-center justify-center rounded-md px-4 text-sm font-semibold border border-slate-700 bg-slate-800 text-slate-200 hover:bg-slate-700 hover:text-white transition-colors cursor-pointer w-full">
-              <CustomGithubIcon className="h-4 w-4 mr-2" /> Code
-            </div>
-          </HoverCardTrigger>
-          <HoverCardContent className="bg-slate-900 border border-slate-800 text-sm font-medium text-white shadow-xl">
-            View the source code on GitHub.
-          </HoverCardContent>
-        </HoverCard>
-
+        {/* Code button – opens GitHub, wrapped in Tooltip (no asChild) */}
         <Tooltip>
           <TooltipTrigger>
-            <div className="inline-flex h-10 items-center justify-center rounded-md px-4 text-sm font-bold bg-cyan-600 hover:bg-cyan-500 text-white transition-colors w-full cursor-pointer">
-              Live Demo <ExternalLink className="h-4 w-4 ml-2" />
-            </div>
+            <a 
+              href={project.codeUrl} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="inline-flex h-10 items-center justify-center rounded-md px-4 text-sm font-semibold border border-slate-700 bg-slate-800 text-slate-200 hover:bg-slate-700 hover:text-white transition-colors cursor-pointer w-full"
+            >
+              <CustomGithubIcon className="h-4 w-4 mr-2" /> Code
+            </a>
           </TooltipTrigger>
-          <TooltipContent className="hidden sm:block bg-slate-900 border-cyan-500/40 text-white">
-            Visit the live project website
+          <TooltipContent className="bg-slate-900 border-slate-800 text-white font-medium">
+            View the source code on GitHub.
+          </TooltipContent>
+        </Tooltip>
+
+        {/* Live Demo button – relative route, Tooltip without asChild */}
+        <Tooltip>
+          <TooltipTrigger>
+            <a 
+              href={project.liveUrl} 
+              className="inline-flex h-10 items-center justify-center rounded-md px-4 text-sm font-bold bg-cyan-600 hover:bg-cyan-500 text-white transition-colors w-full cursor-pointer"
+            >
+              Live Demo <ExternalLink className="h-4 w-4 ml-2" />
+            </a>
+          </TooltipTrigger>
+          <TooltipContent className="bg-slate-900 border-cyan-500/40 text-white">
+            Open the live project.
           </TooltipContent>
         </Tooltip>
       </CardFooter>
